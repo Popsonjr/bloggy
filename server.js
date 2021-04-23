@@ -1,21 +1,12 @@
 let express = require("express")
+let mongodb = require('mongodb')
 
 let app = express()
-let mongodb = require('mongodb')
+// app.get('/', (req, res) => {
+//     res.send("hello")
+// })
+const db = require('./db').db()
 let sanitizeHTML = require('sanitize-html')
-
-let port = process.env.PORT
-if (port == null || port == "") {
-    port = 5000
-}
-
-let db
-let con = "mongodb+srv://todoAppUser:popo2403@cluster0.gka4p.mongodb.net/blogTest?retryWrites=true&w=majority"
-
-mongodb.connect(con, {useNewUrlParser: true}, (err, client) => {
-    db = client.db()
-    app.listen(port)
-})
 
 app.use(express.json())
 
@@ -168,7 +159,4 @@ app.post('/delete', (req, res) => {
     })
 })
 
-
-
-
-// app.listen(`${port}`)
+module.exports = app
