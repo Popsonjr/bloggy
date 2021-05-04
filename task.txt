@@ -1,0 +1,21 @@
+1. Sanitize the post data before inserting in database
+* Cleanup
+* No tags e.t.c 
+
+2. Create the Edit Function
+
+3. Create the Delete Function
+
+4. Create a login & register page when create a post is clicked
+
+5. Build the login, registering and logout functionality
+
+6. Create better UI for the Posts landing page
+*navbar
+* jumbotron
+* main post layouts
+
+
+
+
+10. forgot password functionality

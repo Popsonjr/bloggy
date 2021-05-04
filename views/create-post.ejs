@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-v4-rtl/4.6.0-2/css/bootstrap.min.css" integrity="sha512-hugT+JEQi0vXZbvspjv4x2M7ONBvsLR9IFTEQAYoUsmk7s1rRc2u7I6b4xa14af/wZ+Nw7Aspf3CtAfUOGyflA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <title>Bloggy</title>
+</head>
+<body class="bg-dark text-white">
+    <div class="container">
+        <header class="p-2">
+            <nav class="d-flex justify-content-between">
+                <div class="image p-2">
+                    <h6>blog</h6>
+                </div>
+                <div class="d-flex">
+                    <a class="text-white p-2 mx-5" href="/"><h5>Home</h5></a>
+                    <a href="/create"><button class="btn btn-sm btn-warning text-white" type="button">CREATE NEW POST</button></a>
+                </div>
+            </nav>
+        </header>
+        <div class="card text-dark mt-5" id="create">    
+                    <div class="card-header">
+                        <h5 class="card-title">Create a new post</h5>
+                    </div>
+                    <div class="card-body">
+                        <form  class="form" action="/create" method="post">
+                            <label for="">Title of Post</label>
+                            <input type="text" class="form-control title" name="title" required>
+                            <label for="">Description of Post</label>
+                            <input type="text" class="form-control description" name="description" required>
+                            <label for="">Category of Post</label>
+                            <input type="text" class="form-control category" name="category"  required>
+                            <label for="">Date of post</label>
+                            <input type="date" class="form-control date" name="date" required>
+                            <div class="input-group">
+                            <label for="" class="input-group-text">Image</label>
+                            <input type="file" class="form-control" name="image">
+                            </div>
+                        
+
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-block" type="submit" name="submit">Add Post</button>
+                        </form>
+                    </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>

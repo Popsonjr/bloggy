@@ -1,24 +1,38 @@
 let express = require("express")
-let mongodb = require('mongodb')
-
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const bodyParser = require('body-parser')
+const flash = require('connect-flash')
 let app = express()
-// app.get('/', (req, res) => {
-//     res.send("hello")
-// })
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 const db = require('./db').db()
 const router = require('./router.js')
-app.use('/', router)
 
-let sanitizeHTML = require('sanitize-html')
 
-app.use(express.json())
+// app.use(express.json())
 
 // make folder available from the root of server
 app.use(express.static('public'))
 
-app.use(express.urlencoded({extended: false}))
+// app.use(express.urlencoded({extended: false}))
+app.set('views', 'views')
+app.set('view engine', 'ejs')
 
+let sessionOptions = session({
+    secret: "can be anything o",
+    store: new MongoStore({client: require('./db')}),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {maxAge: 1000 * 60 * 60 * 12, httpOnly: true}
+})
+
+app.use(sessionOptions)
+app.use(flash())
+
+
+app.use('/', router)
 
 
 
