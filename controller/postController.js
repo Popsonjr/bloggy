@@ -1,22 +1,30 @@
 const Post = require('../model/Posts')
 // const mongodb = require('mongodb')
-exports.createPage = function (req, res) {
-    res.render('create-post')
-}
+
 
 exports.login = function (req, res) {
-    res.render('login')
+    if (req.session.user) {
+        res.redirect('/create')
+    } else {
+        res.render('login', {message: req.flash('errors')})
+    }
+    
+        
 }
 
 exports.register = function (req, res) {
-    res.render('register')
+    if (req.session.user) {
+        res.render('register', {message: req.flash('errors')})
+    } else {
+        res.render('register', {message: req.flash('errors')})
+    }
 }
 
 exports.create = function (req, res) {
     let post = new Post.postFunc(req.body)
     
     post.create().then(() => { 
-        req.session.post = {postTitle: post.post.title}
+        req.session.user = {user: req.body.username, postTitle: post.post.title}
         req.flash('message', 'New Post Created Succesfully')
        
         req.session.save(function () {
